@@ -2,7 +2,8 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  CreateDateColumn
+  CreateDateColumn,
+  UpdateDateColumn
 } from "typeorm";
 import { Season } from "../enums/Season";
 import { Unit } from "../enums/Unit";
@@ -38,4 +39,7 @@ export class Product {
 
   @CreateDateColumn()
   createdAt!: Date;
+
+  @UpdateDateColumn()
+  updatedDate!: Date;
 }

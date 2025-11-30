@@ -1,14 +1,56 @@
-# Fruits Market - Version minimale (Product uniquement) - à compléter
+# Fruits Market - Version minimale
 
-Projet d'application e-commerce avec API REST et base de données.
+Application e-commerce avec API REST et base de données MariaDB.
+
+Cette version de l'application contient :
+
+- Configuration __Docker Compose__ (API REST + Base de données MariaDB + Adminer) :
+  - Configuration des dépendances entre services Docker entre (via depends_on et healthcheck),
+  - Variables d'environnement :
+    - api/.env
+    - db/.env
+- __API REST__ : application TypeScript (Hono)
+  - Connexion à la base de données via __TypeORM__ (api/database/data-source.ts),
+  - Configuration de l'entité __Product__ avec __TypeORM__(api/entities/Product.ts),
+  - Configuration du routeur __products__ (routes préfixées par "/products"),
+  - Handler __GetAllProducts__ (api/src/handlers/products/GetAllProducts.ts) associé à la route __HTTP GET /products__,
+  - Mise en place de middlewares hono/cors, hono/secure-headers, hono/pretty-json, hono/trailing-slash ((api/src/app.ts))
+  - Gestion centralisée des __erreurs 404__ avec __app.notFound__ (api/src/app.ts),
+  - Gestion centralisée des __erreurs__ avec __app.onError__ (api/src/app.ts).
+- Requêtes HTTP de test de l'API avec __Bruno__.
+
+## Travail à réaliser
+
+- Implémenter les __entitées__ manquantes :
+  - Cart
+  - CartItem
+  - Country
+  - Order
+  - OrderItem
+  - Product
+  - User
+- Implémenter les __handlers__ manquants :
+  - auth
+  - carts
+  - countries
+  - orders
+  - products
+- Implémenter le __middleware auth__ pour vérifier l'authentification
+
+- Gérer les routes manquantes :
+  - /products
+  - /countries
+  - /auth
+  - /carts
+  - /orders
 
 ## Architecture
 
-- **API** : Bun + TypeORM + Hono (port 3000)
-- **Base de données** : MariaDB
-- **Adminer** : Adminer (port 8080)
+- __API__ : Bun + TypeORM + Hono (port 3000)
+- __Base de données__ : MariaDB
+- __Adminer__ : Adminer (port 8080)
 
-## Commandes Docker Compose essentielles
+## Commandes Docker Compose
 
 ### Démarrer le projet
 
@@ -32,7 +74,7 @@ Se placer dans le terminal et saisir le raccourci clavier CTRL + C (identique Wi
 
 docker compose down
 
-# Arrêter et supprimer les volumes (⚠️ supprime les données)
+# Arrêter et supprimer les volumes (supprime les données)
 docker compose down -v
 ```
 
@@ -94,15 +136,15 @@ docker compose exec api bun run test
 # Supprimer les conteneurs arrêtés, réseaux et images non utilisées
 docker compose down --rmi all
 
-# Nettoyer le système Docker complet (⚠️ affecte tous les projets)
+# Nettoyer le système Docker complet (affecte tous les projets)
 docker system prune -a --volumes
 ```
 
 ## Accès aux services
 
-- **API** : <http://localhost:3000>
-- **Adminer** : <http://localhost:8080>
-- **Health check** : <http://localhost:3000/health>
+- __API__ : <http://localhost:3000>
+- __Adminer__ : <http://localhost:8080>
+- __Health check__ : <http://localhost:3000/health>
 
 ![Fruits market](./assets/fruits-market.png)
 
@@ -110,7 +152,7 @@ docker system prune -a --volumes
 
 !["Logotype Shrp"](https://sherpa.one/images/sherpa-logotype.png)
 
-**Alexandre Leroux**
+__Alexandre Leroux__
 _Enseignant / Formateur_
 _Développeur logiciel web & mobile_
 
