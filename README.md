@@ -23,6 +23,8 @@ Cette version de l'application contient :
 
 ## Travail à réaliser
 
+- Se connecter à __Adminer__ : <http://localhost:8080> (Serveur = db, cf. db/.env)
+- Importer le fichier de données de test __db/product-data.sql__ dans la base de données (<http://localhost:8080/?server=db&username=fruits_market&db=fruits_market&import=>),
 - Implémenter les __entitées__ manquantes :
   - Cart
   - CartItem
