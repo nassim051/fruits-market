@@ -2,6 +2,8 @@
 
 Application e-commerce avec API REST et base de données MariaDB.
 
+## Version minimale à compléter
+
 Cette version de l'application contient :
 
 - Configuration __Docker Compose__ (API REST + Base de données MariaDB + Adminer) :
