@@ -198,6 +198,10 @@ docker compose exec api bun run test
 # (remplacer les mots entourés de <> par la valeur, sans espace ni symboles <>)
 
 docker exec -i <container name> mariadb -hlocalhost -u<database user> -p<mot de passe> <database name> < db/product-data.sql
+
+# Exemple
+docker exec -i fruits_market_db mariadb -hlocalhost -ufruits_market -pazerty123 fruits_market < db/product-data.sql
+
 ```
 
 ### Nettoyage
