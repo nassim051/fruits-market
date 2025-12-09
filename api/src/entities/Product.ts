@@ -3,10 +3,13 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
-  UpdateDateColumn
+  UpdateDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from "typeorm";
 import { Season } from "../enums/Season";
 import { Unit } from "../enums/Unit";
+import { Country } from "./Country";
 
 @Entity()
 export class Product {
@@ -21,7 +24,7 @@ export class Product {
 
   @Column({
     type: "enum",
-    enum: Season
+    enum: Season,
   })
   season!: Season;
 
@@ -33,7 +36,7 @@ export class Product {
 
   @Column({
     type: "enum",
-    enum: Unit
+    enum: Unit,
   })
   unit!: Unit;
 
@@ -42,4 +45,8 @@ export class Product {
 
   @UpdateDateColumn()
   updatedAt!: Date;
+
+  @ManyToOne(() => Country)
+  @JoinColumn({ name: "country_id" })
+  country!: Country;
 }

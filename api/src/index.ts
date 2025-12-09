@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import app from "./app";
 import { initializeDatabase } from "./database/data-source";
 
@@ -25,5 +26,5 @@ startServer();
 
 export default {
   port: process.env.PORT,
-  fetch: app.fetch
+  fetch: app.fetch,
 };

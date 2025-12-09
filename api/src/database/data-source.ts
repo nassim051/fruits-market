@@ -1,6 +1,12 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { Product } from "../entities/Product";
+import { Country } from "../entities/Country";
+import { CartItem } from "../entities/CartItem";
+import { User } from "../entities/User";
+import { Cart } from "../entities/Cart";
+import { OrderItem } from "../entities/OrderItem";
+import { Order } from "../entities/Order";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -11,9 +17,9 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_NAME,
   synchronize: process.env.NODE_ENV === "development",
   //logging: process.env.NODE_ENV === "development",
-  entities: [Product],
+  entities: [Product, Country, Order, OrderItem, Cart, User, CartItem],
   migrations: [],
-  subscribers: []
+  subscribers: [],
 });
 
 export async function initializeDatabase() {
